@@ -63,6 +63,9 @@ class BookListTableViewController: UITableViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        let indexPath = self.tableView.indexPathForCell(sender as! UITableViewCell)!
         
+        let vc = segue.destinationViewController as! ArticlesViewController
+        vc.book = self.books[indexPath.row]
     }
 }
