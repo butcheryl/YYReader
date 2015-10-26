@@ -1,0 +1,13 @@
+PODS:
+  - Ono (1.2.2)
+  - SnapKit (0.15.0)
+
+DEPENDENCIES:
+  - Ono
+  - SnapKit
+
+SPEC CHECKSUMS:
+  Ono: 80b1c686777d3f6d5d5ce6fcac8a74afef4ca197
+  SnapKit: 4962eed2ee18e48cbd2b2292fffc57efe7235f87
+
+COCOAPODS: 0.39.0
