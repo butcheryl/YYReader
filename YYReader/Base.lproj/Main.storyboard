@@ -52,14 +52,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JLv-eB-FId" userLabel="遮罩">
-                                <rect key="frame" x="40" y="0.0" width="520" height="600"/>
-                                <animations/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <connections>
-                                    <action selector="back_click:" destination="RrV-pZ-CdQ" eventType="touchUpInside" id="bd8-Ef-2aP"/>
-                                </connections>
-                            </button>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P72-28-PpJ" userLabel="顶部工具条">
                                 <rect key="frame" x="0.0" y="-20" width="600" height="64"/>
                                 <subviews>
@@ -71,6 +63,9 @@
                                             <constraint firstAttribute="height" constant="44" id="dfh-7a-1oT"/>
                                         </constraints>
                                         <state key="normal" title="返回"/>
+                                        <connections>
+                                            <action selector="backButton_click:" destination="RrV-pZ-CdQ" eventType="touchUpInside" id="QUT-uC-7T7"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="章节名称" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UjW-N7-LT7">
                                         <rect key="frame" x="266" y="32" width="68" height="21"/>
@@ -152,15 +147,11 @@
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="gdB-wZ-feK" firstAttribute="top" secondItem="JLv-eB-FId" secondAttribute="bottom" id="6PE-ac-0dg"/>
-                            <constraint firstAttribute="trailing" secondItem="JLv-eB-FId" secondAttribute="trailing" constant="40" id="8HV-9X-jeG"/>
                             <constraint firstAttribute="trailing" secondItem="1le-zZ-W8N" secondAttribute="trailing" id="KLr-rH-fwp"/>
                             <constraint firstItem="gdB-wZ-feK" firstAttribute="top" secondItem="1le-zZ-W8N" secondAttribute="bottom" id="Ono-06-Y3s"/>
                             <constraint firstItem="P72-28-PpJ" firstAttribute="top" secondItem="Vb8-ZK-9sl" secondAttribute="bottom" constant="-20" id="QUx-Cg-vMt"/>
                             <constraint firstItem="P72-28-PpJ" firstAttribute="leading" secondItem="Gfg-sq-oz9" secondAttribute="leading" id="Sg3-rs-1Og"/>
-                            <constraint firstItem="JLv-eB-FId" firstAttribute="leading" secondItem="Gfg-sq-oz9" secondAttribute="leading" constant="40" id="XO7-Pl-5b5"/>
                             <constraint firstItem="1le-zZ-W8N" firstAttribute="leading" secondItem="Gfg-sq-oz9" secondAttribute="leading" id="af3-oG-qNF"/>
-                            <constraint firstItem="JLv-eB-FId" firstAttribute="top" secondItem="Vb8-ZK-9sl" secondAttribute="bottom" id="rtn-gc-T3m"/>
                             <constraint firstAttribute="trailing" secondItem="P72-28-PpJ" secondAttribute="trailing" id="x8C-Ee-ASt"/>
                         </constraints>
                     </view>
@@ -168,6 +159,7 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="bottomToolBar" destination="1le-zZ-W8N" id="7aB-Do-giz"/>
+                        <outlet property="header" destination="UjW-N7-LT7" id="2Pk-yA-sNG"/>
                         <outlet property="topToolBar" destination="P72-28-PpJ" id="5eh-5F-dqW"/>
                     </connections>
                 </viewController>

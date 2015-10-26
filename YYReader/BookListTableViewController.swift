@@ -6,6 +6,8 @@
 //  Copyright © 2015年 com.butcher. All rights reserved.
 //
 
+import SVProgressHUD
+import Alamofire
 import UIKit
 import Ono
 
@@ -13,27 +15,22 @@ class BookListTableViewController: UITableViewController {
 
     var books = [Book]()
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // 抓取网站的数据
-        let data = NSData(contentsOfURL: NSURL(string: "http://m.ybdu.com/quanben/1")!)
         
-        // 将gbk编码的data转换成UTF-8的字符串
-        let str = NSString(data: data!, encoding: CFStringConvertEncodingToNSStringEncoding(0x0632))
-        
-        // 创建 document
-        let document = try? ONOXMLDocument(string: str as! String, encoding: NSUTF8StringEncoding)
-
-        // 解包
-        if let document = document {
-            // 根据CSS规则检索节点并使用闭包遍历所有检索结果
-            document.enumerateElementsWithCSS(".list p", usingBlock: { (element: ONOXMLElement!, _, _) -> Void in
-                let bookElement = element.children.first as! ONOXMLElement
-                let bookHref = (bookElement["href"] as! String).stringByReplacingOccurrencesOfString("/xiazai", withString: "")
-                self.books.append(Book(uri: bookHref, name: bookElement.stringValue(), author: nil))
-            })
-            self.tableView.reloadData()
+        SVProgressHUD.show()
+        Alamofire.request(.GET, "http://m.ybdu.com/quanben/1").responseHTMLDocument { (response) -> Void in
+            if let document = response.result.value {
+                // 根据CSS规则检索节点并使用闭包遍历所有检索结果
+                document.enumerateElementsWithCSS(".list p", usingBlock: { (element: ONOXMLElement!, _, _) -> Void in
+                    let bookElement = element.children.first as! ONOXMLElement
+                    let bookHref = (bookElement["href"] as! String).stringByReplacingOccurrencesOfString("/xiazai", withString: "")
+                    self.books.append(Book(uri: bookHref, name: bookElement.stringValue(), author: nil))
+                })
+                self.tableView.reloadData()
+                SVProgressHUD.dismiss()
+            }
         }
     }
 
@@ -69,3 +66,4 @@ class BookListTableViewController: UITableViewController {
         vc.book = self.books[indexPath.row]
     }
 }
+
