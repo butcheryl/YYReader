@@ -32,20 +32,23 @@ class ArticlesViewController: UIViewController, UIPageViewControllerDataSource, 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.navigationController?.navigationBarHidden = true
         // Do any additional setup after loading the view.
+        
+        // 隐藏系统的导航栏
+        self.navigationController?.navigationBarHidden = true
         
         self.addChildViewController(self.pageViewController)
         self.view.insertSubview(self.pageViewController.view, atIndex: 0)
         self.pageViewController.didMoveToParentViewController(self)
+        self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action:"background_click:"))
         
         self.load_catalogue()
-        self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action:"background_click:"))
     }
 
     func load_catalogue() {
         var catalogues = [(uri: String, title: String)]()
         SVProgressHUD.show()
+        // 获取当前小说的目录列表
         Alamofire.request(.GET, self.book.catalogueURL()).responseHTMLDocument { (response) -> Void in
             if let document = response.result.value {
                 // 根据CSS规则检索节点并使用闭包遍历所有检索结果
@@ -57,9 +60,12 @@ class ArticlesViewController: UIViewController, UIPageViewControllerDataSource, 
                         }
                     }
                 })
-                
                 self.book.catalogues = catalogues
+                
+                // 加载第一章的内容
                 let vc = ArticlesDetailViewController(url: self.book.chapterURL(0))
+                
+                // 显示到界面上
                 self.pageViewController.setViewControllers([vc], direction: .Forward, animated: false, completion: nil)
             }
         }
@@ -91,6 +97,8 @@ class ArticlesViewController: UIViewController, UIPageViewControllerDataSource, 
             break
         }
     }
+    
+    
     
     @IBAction func backButton_click(sender: AnyObject) {
         self.navigationController?.popViewControllerAnimated(true)
@@ -133,7 +141,7 @@ class ArticlesViewController: UIViewController, UIPageViewControllerDataSource, 
         return self.topToolBar == nil ? true : self.topToolBar.hidden
     }
     
-    /*
+
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -141,5 +149,5 @@ class ArticlesViewController: UIViewController, UIPageViewControllerDataSource, 
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }
-    */
+
 }

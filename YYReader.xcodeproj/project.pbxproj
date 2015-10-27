@@ -16,7 +16,7 @@
 		34FAEED21BDDD60700EEC680 /* ArticlesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34FAEED11BDDD60700EEC680 /* ArticlesViewController.swift */; };
 		34FAEED41BDDD78C00EEC680 /* CatalogueListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34FAEED31BDDD78C00EEC680 /* CatalogueListViewController.swift */; };
 		34FAEED61BDDF78600EEC680 /* YYGlobalConst.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34FAEED51BDDF78600EEC680 /* YYGlobalConst.swift */; };
-		34FAEED91BDDFC3000EEC680 /* Alamofire+CustomResponseSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34FAEED81BDDFC3000EEC680 /* Alamofire+CustomResponseSerializer.swift */; };
+		34FAEED91BDDFC3000EEC680 /* HTMLResponseSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34FAEED81BDDFC3000EEC680 /* HTMLResponseSerializer.swift */; };
 		34FAEEDD1BDE13A800EEC680 /* Chapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34FAEEDC1BDE13A800EEC680 /* Chapter.swift */; };
 		34FAEEDF1BDE145500EEC680 /* ArticlesDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34FAEEDE1BDE145500EEC680 /* ArticlesDetailViewController.swift */; };
 		B5F8AD1FF48DB11DD0CD47B2 /* Pods_YYReader.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FE2271005B765DA8250E672 /* Pods_YYReader.framework */; };
@@ -36,7 +36,7 @@
 		34FAEED11BDDD60700EEC680 /* ArticlesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticlesViewController.swift; sourceTree = "<group>"; };
 		34FAEED31BDDD78C00EEC680 /* CatalogueListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatalogueListViewController.swift; sourceTree = "<group>"; };
 		34FAEED51BDDF78600EEC680 /* YYGlobalConst.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YYGlobalConst.swift; sourceTree = "<group>"; };
-		34FAEED81BDDFC3000EEC680 /* Alamofire+CustomResponseSerializer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Alamofire+CustomResponseSerializer.swift"; sourceTree = "<group>"; };
+		34FAEED81BDDFC3000EEC680 /* HTMLResponseSerializer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTMLResponseSerializer.swift; sourceTree = "<group>"; };
 		34FAEEDC1BDE13A800EEC680 /* Chapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Chapter.swift; sourceTree = "<group>"; };
 		34FAEEDE1BDE145500EEC680 /* ArticlesDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticlesDetailViewController.swift; sourceTree = "<group>"; };
 		445855DF70C1178A8F18484E /* Pods-YYReader.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YYReader.debug.xcconfig"; path = "Pods/Target Support Files/Pods-YYReader/Pods-YYReader.debug.xcconfig"; sourceTree = "<group>"; };
@@ -105,7 +105,7 @@
 		34FAEED71BDDFB8800EEC680 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
-				34FAEED81BDDFC3000EEC680 /* Alamofire+CustomResponseSerializer.swift */,
+				34FAEED81BDDFC3000EEC680 /* HTMLResponseSerializer.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -256,7 +256,7 @@
 				340CE7C61BDA1B1E00A64D6B /* AppDelegate.swift in Sources */,
 				34FAEED61BDDF78600EEC680 /* YYGlobalConst.swift in Sources */,
 				340CE7DB1BDA20DB00A64D6B /* Book.swift in Sources */,
-				34FAEED91BDDFC3000EEC680 /* Alamofire+CustomResponseSerializer.swift in Sources */,
+				34FAEED91BDDFC3000EEC680 /* HTMLResponseSerializer.swift in Sources */,
 				34FAEEDD1BDE13A800EEC680 /* Chapter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

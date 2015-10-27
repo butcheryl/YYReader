@@ -53,6 +53,7 @@ class ArticlesDetailViewController: UIViewController {
             make.left.right.bottom.equalTo(0)
         }
         
+        // 请求当前章节的内容
         Alamofire.request(.GET, self.url).responseHTMLDocument({ (response) -> Void in
             if let document = response.result.value {
                 document.enumerateElementsWithXPath(".//*[@id='nr_title']", usingBlock: { (element:ONOXMLElement!, _, _) -> Void in

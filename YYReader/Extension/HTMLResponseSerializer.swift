@@ -1,5 +1,5 @@
 //
-//  Alamofire+CustomResponseSerializer.swift
+//  HTMLResponseSerializer.swift
 //  YYReader
 //
 //  Created by Butcher on 15/10/26.

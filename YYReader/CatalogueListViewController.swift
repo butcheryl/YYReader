@@ -24,9 +24,6 @@ class CatalogueListViewController: UITableViewController {
         
         self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "关闭", style: .Plain, target: self, action: "backButton_click:")
-        
-        
-        
     }
     
     func backButton_click(sender: UIBarButtonItem) {
