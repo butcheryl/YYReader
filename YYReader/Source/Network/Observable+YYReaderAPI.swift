@@ -7,14 +7,14 @@
 //
 
 import Foundation
-import Moya
 import RxSwift
+import Moya
 import Fuzi
 
-extension Observable where E == Moya.Response {
+extension ObservableType where E == Moya.Response {
     public func mapHTMLString() throws -> Observable<String> {
         
-        return map { response -> String in
+        return map { (response) -> String in
             
             guard let str = String(data: response.data, encoding: String.Encoding(rawValue:CFStringConvertEncodingToNSStringEncoding(CFStringEncoding(CFStringEncodings.GB_18030_2000.rawValue)))) else {
                 throw MoyaError.stringMapping(response)
@@ -24,7 +24,7 @@ extension Observable where E == Moya.Response {
         }
     }
     
-    open func mapHTML() -> Observable<HTMLDocument> {
+    public func mapHTML() -> Observable<HTMLDocument> {
         return map { response in
             try HTMLDocument(data: response.data)
         }

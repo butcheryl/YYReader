@@ -10,51 +10,32 @@ import UIKit
 import RxSwift
 import Fuzi
 
-struct Book: CustomStringConvertible {
-    var name: String
-    var author: String
-    var category: String
-    
-    var path: String
-    
-    init(element: XMLElement) {
-        category = (element.firstChild(xpath: "a[1]")?.stringValue ?? "")
-            .replacingOccurrences(of: "[", with: "")
-            .replacingOccurrences(of: "]", with: "")
-        
-        var temp = element.firstChild(xpath: "text()")?.stringValue ?? ""
-        
-        if temp.characters.count > 0 && temp.characters.first == "/" {
-            temp = temp.substring(from: temp.index(temp.startIndex, offsetBy: 1))
-        }
-        
-        author = temp
-        
-        name = element.firstChild(xpath: "a[2]")?.stringValue ?? ""
-        
-        path = element.firstChild(xpath: "a[2]")?.attr("href") ?? ""
-    }
-    
-    var description: String {
-        return "name: \(name), author: \(author), category: \(category), path: \(path)"
-    }
-}
-
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+         
+         // http://m.ybdu.com/xiaoshuo/12/12845/
+         // http://m.ybdu.com/xiaoshuo/12/12845/3179548.html
 
         APIs.request(.rank(page: 1))
             .mapHTML()
-            .subscribe(onNext: { doc in
-                let list = doc.body?.css("div.list p.line")
-
-                list?.forEach({ element in
-                    print(Book(element: element))
+            .map({ doc -> [Book] in
+                doc.body?.css("div.list p.line").map { element in
+                    let name = element.firstChild(xpath: "a[2]")?.stringValue ?? ""
+                    let uri = (element.firstChild(xpath: "a[2]")?.attr("href") ?? "").replacingOccurrences(of: "/xiazai", with: "")
+                    
+                    var book = Book()
+                    book.uri = uri
+                    book.info.name = name
+                    return book
+                } ?? []
+            })
+            .subscribe(onNext: { books in
+                books.forEach({ (b) in
+                    print(b)
                 })
-                
             }, onError: { (error) in
                 print(error)
             })
