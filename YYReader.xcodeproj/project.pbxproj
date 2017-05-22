@@ -80,6 +80,7 @@
 		395B24EB1ED2B85600A874D0 = {
 			isa = PBXGroup;
 			children = (
+				3982F0271ED2D1E80025E081 /* YYReaderParser */,
 				395B24F61ED2B85600A874D0 /* YYReader */,
 				395B250B1ED2B85600A874D0 /* YYReaderTests */,
 				395B24F51ED2B85600A874D0 /* Products */,
@@ -141,6 +142,13 @@
 				3982F0201ED2CBA00025E081 /* Info.plist */,
 			);
 			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		3982F0271ED2D1E80025E081 /* YYReaderParser */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = YYReaderParser;
 			sourceTree = "<group>";
 		};
 		50DD29B06A9F0E1BC44D7043 /* Frameworks */ = {
@@ -526,7 +534,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D0F62AC2FF830FA92D8B1280 /* Pods-YYReaderTests.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = 2YZ6L74GH4;
 				INFOPLIST_FILE = YYReaderTests/Info.plist;
@@ -542,7 +550,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = FCEC0D6AF209817620C34362 /* Pods-YYReaderTests.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = 2YZ6L74GH4;
 				INFOPLIST_FILE = YYReaderTests/Info.plist;

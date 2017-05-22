@@ -1,5 +1,6 @@
 PODS:
   - Alamofire (4.4.0)
+  - Fuzi (1.0.1)
   - Kingfisher (3.9.1)
   - Moya (8.0.4):
     - Moya/Core (= 8.0.4)
@@ -41,6 +42,7 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire
+  - Fuzi
   - Kingfisher
   - Moya
   - Moya/RxSwift
@@ -59,6 +61,7 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   Alamofire: dc44b1600b800eb63da6a19039a0083d62a6a62d
+  Fuzi: 851403654bac55675aaeed815d0c8a1d3e3d3e8b
   Kingfisher: 6729a0baaa458245bfb8cd5a1296c71c10d6eb6c
   Moya: a08bc060c7a44eee27447b239ed33a189b641e2b
   MoyaSugar: 302175740302bed7309b9483c4a3321631eab753
@@ -74,6 +77,6 @@ SPEC CHECKSUMS:
   SnapKit: 1ca44df72cfa543218d177cb8aab029d10d86ea7
   Then: 8496793c8fcac95482b943909b440724c7d8d82c
 
-PODFILE CHECKSUM: b0e72e7415c13bfbd4e63f3c070b1c8096ee4205
+PODFILE CHECKSUM: cd925420212b97f12c4f81c1ed12106cf8835ec1
 
 COCOAPODS: 1.2.1

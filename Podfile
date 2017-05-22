@@ -31,8 +31,10 @@ target 'YYReader' do
 
   # UI
   pod 'SnapKit'
-  
   pod 'Then'
+  
+  # XML/HTML Parser
+  pod 'Fuzi'
 
   target 'YYReaderTests' do
     inherit! :search_paths
