@@ -14,6 +14,12 @@
 		3982F0231ED2CBA00025E081 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3982F01A1ED2CBA00025E081 /* Main.storyboard */; };
 		3982F0241ED2CBA00025E081 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3982F01D1ED2CBA00025E081 /* AppDelegate.swift */; };
 		3982F0251ED2CBA00025E081 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3982F01E1ED2CBA00025E081 /* ViewController.swift */; };
+		3982F02B1ED2D6D10025E081 /* YYReaderParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3982F02A1ED2D6D10025E081 /* YYReaderParser.swift */; };
+		3982F02E1ED2DA0D0025E081 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3982F02D1ED2DA0D0025E081 /* Networking.swift */; };
+		3982F0301ED2DC100025E081 /* BookAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3982F02F1ED2DC100025E081 /* BookAPI.swift */; };
+		3982F0321ED2E3390025E081 /* YYReaderTargetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3982F0311ED2E3390025E081 /* YYReaderTargetType.swift */; };
+		3982F0351ED2E6E90025E081 /* Observable+YYReaderAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3982F0341ED2E6E90025E081 /* Observable+YYReaderAPI.swift */; };
+		3982F03A1ED2EA350025E081 /* UIViewController+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3982F0391ED2EA350025E081 /* UIViewController+Rx.swift */; };
 		EEA4DEF50FE91D7BA13B23B1 /* Pods_YYReaderTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D791B7277D0C3643E36FC4E /* Pods_YYReaderTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -38,6 +44,12 @@
 		3982F01D1ED2CBA00025E081 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3982F01E1ED2CBA00025E081 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		3982F0201ED2CBA00025E081 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3982F02A1ED2D6D10025E081 /* YYReaderParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YYReaderParser.swift; sourceTree = "<group>"; };
+		3982F02D1ED2DA0D0025E081 /* Networking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
+		3982F02F1ED2DC100025E081 /* BookAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookAPI.swift; sourceTree = "<group>"; };
+		3982F0311ED2E3390025E081 /* YYReaderTargetType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YYReaderTargetType.swift; sourceTree = "<group>"; };
+		3982F0341ED2E6E90025E081 /* Observable+YYReaderAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Observable+YYReaderAPI.swift"; sourceTree = "<group>"; };
+		3982F0391ED2EA350025E081 /* UIViewController+Rx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Rx.swift"; sourceTree = "<group>"; };
 		8D791B7277D0C3643E36FC4E /* Pods_YYReaderTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_YYReaderTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABD656F9AAD2F086E0EFEF13 /* Pods-YYReader.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YYReader.release.xcconfig"; path = "Pods/Target Support Files/Pods-YYReader/Pods-YYReader.release.xcconfig"; sourceTree = "<group>"; };
 		C9F4546AF4F0A87EFA850F20 /* Pods-YYReader.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YYReader.debug.xcconfig"; path = "Pods/Target Support Files/Pods-YYReader/Pods-YYReader.debug.xcconfig"; sourceTree = "<group>"; };
@@ -130,6 +142,8 @@
 		3982F01C1ED2CBA00025E081 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				3982F0361ED2E9800025E081 /* Rx */,
+				3982F02C1ED2D9980025E081 /* Network */,
 				3982F01D1ED2CBA00025E081 /* AppDelegate.swift */,
 				3982F01E1ED2CBA00025E081 /* ViewController.swift */,
 			);
@@ -147,8 +161,36 @@
 		3982F0271ED2D1E80025E081 /* YYReaderParser */ = {
 			isa = PBXGroup;
 			children = (
+				3982F02A1ED2D6D10025E081 /* YYReaderParser.swift */,
 			);
 			path = YYReaderParser;
+			sourceTree = "<group>";
+		};
+		3982F02C1ED2D9980025E081 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				3982F0331ED2E3590025E081 /* Base */,
+				3982F02F1ED2DC100025E081 /* BookAPI.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		3982F0331ED2E3590025E081 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				3982F02D1ED2DA0D0025E081 /* Networking.swift */,
+				3982F0311ED2E3390025E081 /* YYReaderTargetType.swift */,
+				3982F0341ED2E6E90025E081 /* Observable+YYReaderAPI.swift */,
+			);
+			name = Base;
+			sourceTree = "<group>";
+		};
+		3982F0361ED2E9800025E081 /* Rx */ = {
+			isa = PBXGroup;
+			children = (
+				3982F0391ED2EA350025E081 /* UIViewController+Rx.swift */,
+			);
+			path = Rx;
 			sourceTree = "<group>";
 		};
 		50DD29B06A9F0E1BC44D7043 /* Frameworks */ = {
@@ -364,8 +406,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3982F02B1ED2D6D10025E081 /* YYReaderParser.swift in Sources */,
+				3982F0301ED2DC100025E081 /* BookAPI.swift in Sources */,
 				3982F0251ED2CBA00025E081 /* ViewController.swift in Sources */,
 				3982F0241ED2CBA00025E081 /* AppDelegate.swift in Sources */,
+				3982F02E1ED2DA0D0025E081 /* Networking.swift in Sources */,
+				3982F0321ED2E3390025E081 /* YYReaderTargetType.swift in Sources */,
+				3982F03A1ED2EA350025E081 /* UIViewController+Rx.swift in Sources */,
+				3982F0351ED2E6E90025E081 /* Observable+YYReaderAPI.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

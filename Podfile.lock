@@ -18,6 +18,8 @@ PODS:
     - Moya/RxSwift (>= 8.0.0)
     - MoyaSugar/Core
     - RxSwift (>= 3.0.0)
+  - NSObject+Rx (2.3.0):
+    - RxSwift (~> 3.0)
   - ReactorKit (0.4.3):
     - RxSwift (>= 3.0.0)
   - Result (3.2.2)
@@ -48,6 +50,7 @@ DEPENDENCIES:
   - Moya/RxSwift
   - MoyaSugar
   - MoyaSugar/RxSwift
+  - NSObject+Rx
   - ReactorKit
   - RxBlocking (~> 3.0)
   - RxCocoa
@@ -65,6 +68,7 @@ SPEC CHECKSUMS:
   Kingfisher: 6729a0baaa458245bfb8cd5a1296c71c10d6eb6c
   Moya: a08bc060c7a44eee27447b239ed33a189b641e2b
   MoyaSugar: 302175740302bed7309b9483c4a3321631eab753
+  NSObject+Rx: 38170f84b948152c05c57260cb853e387a5519d1
   ReactorKit: d14097db56d7f473fb0544f671d1bfbecbaec1aa
   Result: 4edd39003fdccf281d418ee1b006571f70123250
   RxBlocking: 1e8c41cfe7ca2fc0e19d0e616c553845c63cbbd3
@@ -77,6 +81,6 @@ SPEC CHECKSUMS:
   SnapKit: 1ca44df72cfa543218d177cb8aab029d10d86ea7
   Then: 8496793c8fcac95482b943909b440724c7d8d82c
 
-PODFILE CHECKSUM: cd925420212b97f12c4f81c1ed12106cf8835ec1
+PODFILE CHECKSUM: 5f2887cae665a413ab50af29cb7a54bcf7805bde
 
 COCOAPODS: 1.2.1

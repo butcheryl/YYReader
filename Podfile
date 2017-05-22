@@ -28,6 +28,7 @@ target 'YYReader' do
   pod 'RxDataSources'
   pod 'RxOptional'
   pod 'RxSwiftUtilities'
+  pod 'NSObject+Rx'
 
   # UI
   pod 'SnapKit'
