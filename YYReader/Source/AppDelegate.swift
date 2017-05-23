@@ -7,7 +7,10 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 import NSObject_Rx
+import ReactorKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -45,3 +48,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 }
 
+public extension View where Self: NSObject {
+    var disposeBag: DisposeBag {
+        get { return self.rx_disposeBag }
+        set { self.rx_disposeBag = newValue }
+    }
+}

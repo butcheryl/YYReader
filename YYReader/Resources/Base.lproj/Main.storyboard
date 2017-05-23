@@ -1,26 +1,131 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="XhE-aD-GVv">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="tne-QT-ifu">
+        <!--书城-->
+        <scene sceneID="1SI-nM-cAb">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="xuo-Ka-rSR" customClass="BookstoreViewController" customModule="YYReader" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
-                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                        <viewControllerLayoutGuide type="top" id="U3j-ol-R76"/>
+                        <viewControllerLayoutGuide type="bottom" id="fFE-d9-K46"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                    <view key="view" contentMode="scaleToFill" id="ucF-ZE-rnf">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" title="书城" id="9cx-C3-kDi"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hWE-ub-kl8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="250" y="277"/>
+        </scene>
+        <!--书架-->
+        <scene sceneID="Fbv-aA-fn5">
+            <objects>
+                <viewController id="cNc-0s-yIL" customClass="BookcaseViewController" customModule="YYReader" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="DJm-Qn-SZt"/>
+                        <viewControllerLayoutGuide type="bottom" id="QW2-3c-7va"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="2me-9I-iyo">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ygV-Tz-gtA">
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" id="jhe-16-eux">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jhe-16-eux" id="6H1-Zx-O6g">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="ygV-Tz-gtA" firstAttribute="leading" secondItem="2me-9I-iyo" secondAttribute="leading" id="B1w-dr-sc4"/>
+                            <constraint firstItem="ygV-Tz-gtA" firstAttribute="top" secondItem="DJm-Qn-SZt" secondAttribute="bottom" id="F4d-nb-6X3"/>
+                            <constraint firstItem="QW2-3c-7va" firstAttribute="top" secondItem="ygV-Tz-gtA" secondAttribute="bottom" id="gEo-Zr-mRI"/>
+                            <constraint firstAttribute="trailing" secondItem="ygV-Tz-gtA" secondAttribute="trailing" id="zUJ-th-wGX"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="书架" id="5Fq-jd-cHY"/>
+                    <connections>
+                        <outlet property="tableView" destination="ygV-Tz-gtA" id="tNE-tI-7A8"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hjJ-Tw-EAZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1684" y="295.50224887556226"/>
+        </scene>
+        <!--Main Tab Bar Controller-->
+        <scene sceneID="Hwf-YH-nyR">
+            <objects>
+                <tabBarController id="XhE-aD-GVv" customClass="MainTabBarController" customModule="YYReader" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="hVj-QB-bpF">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="b2S-8d-Tjf" kind="relationship" relationship="viewControllers" id="Qdp-Pa-zNJ"/>
+                        <segue destination="ngr-9G-lNm" kind="relationship" relationship="viewControllers" id="3tK-iN-85l"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Heq-Xd-4Q9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-756" y="-1157"/>
+        </scene>
+        <!--书架-->
+        <scene sceneID="huq-yF-HMU">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="b2S-8d-Tjf" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="书架" id="fDH-ow-2Y3"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Ywk-Ll-Jgf">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="cNc-0s-yIL" kind="relationship" relationship="rootViewController" id="0Qq-SB-kUb"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qsH-Rl-GDj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1684" y="-468.21589205397305"/>
+        </scene>
+        <!--书城-->
+        <scene sceneID="Auq-VJ-nDL">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ngr-9G-lNm" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="书城" id="QTf-Sf-MII"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="vDN-1n-88b">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="xuo-Ka-rSR" kind="relationship" relationship="rootViewController" id="lkK-l9-c77"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iz0-GD-72w" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="252" y="-468"/>
         </scene>
     </scenes>
 </document>
