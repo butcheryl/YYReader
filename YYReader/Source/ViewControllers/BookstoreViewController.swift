@@ -45,11 +45,11 @@ class BookstoreViewController: BaseViewController, View {
         
         
         tableView.mj_header = MJRefreshStateHeader(refreshingBlock: { 
-            
+            self.reactor?.action.onNext(Reactor.Action.refresh)
         })
         
         tableView.mj_footer = MJRefreshBackFooter(refreshingBlock: { 
-            
+            self.reactor?.action.onNext(Reactor.Action.loadMore)
         })
         
         view.backgroundColor = UIColor.white
@@ -97,6 +97,22 @@ class BookstoreViewController: BaseViewController, View {
             .map { $0.sections }
             .bind(to: tableView.rx.items(dataSource: self.dataSource))
             .disposed(by: self.disposeBag)
+        
+        reactor.state
+            .map({ $0.refreshState })
+            .distinctUntilChanged()
+            .subscribe(onNext: { refreshState in
+                if refreshState == .headerEnd {
+                    self.tableView.mj_header.endRefreshing()
+                } else if refreshState == .footerEnd {
+                    self.tableView.mj_footer.endRefreshing()
+                } else if refreshState == .noMoreData {
+                    self.tableView.mj_footer.endRefreshingWithNoMoreData()
+                } else if refreshState == .reset {
+                    self.tableView.mj_footer.resetNoMoreData()
+                }
+            })
+            .disposed(by: disposeBag)
     }
 
     /*

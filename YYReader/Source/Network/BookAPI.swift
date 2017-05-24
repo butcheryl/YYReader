@@ -19,7 +19,6 @@ enum BookTarget {
     case bookInfo(uri: String)
     
     case catalog(uri: String)
-    
 }
 
 extension BookTarget: YYReaderTargetType {

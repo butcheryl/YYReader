@@ -11,16 +11,29 @@ import RxCocoa
 import RxSwift
 
 final class BookstoreViewReactor: Reactor {
+    
+    enum RefreshState {
+        case normal
+        case headerEnd
+        case footerEnd
+        case noMoreData
+        case reset
+    }
+    
     enum Action {
         case refresh
         case loadMore
     }
     
     enum Mutation {
-        case setBooks([Book])
+        case setBooks([Book], page: Int)
+        case appendBooks([Book], page: Int)
+        case setRefreshState(RefreshState)
     }
     
     struct State {
+        var page: Int = 1
+        var refreshState: RefreshState = .normal
         var sections: [BookListViewSection] = [.bookcase([])]
     }
     
@@ -35,22 +48,39 @@ final class BookstoreViewReactor: Reactor {
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {
         case .refresh:
-            return self.service.books(category: .chuanyue, page: 1).map({ return .setBooks($0) })
-        default:
-            break
+            let loadData = self.service.books(category: .chuanyue, page: 1).map({ return Mutation.setBooks($0, page: 1) })
+            let refreshEnd = Observable<Mutation>.just(.setRefreshState(.headerEnd))
+            let refreshNormal = Observable<Mutation>.just(.setRefreshState(.normal))
+            return .concat([loadData, refreshEnd, refreshNormal])
+        case .loadMore:
+            let nextPage = self.currentState.page + 1
+            let loadData = self.service
+                .books(category: .chuanyue, page: nextPage)
+                .map({ return Mutation.appendBooks($0, page: nextPage) })
+            
+            let refreshEnd = Observable<Mutation>.just(.setRefreshState(.footerEnd))
+            let refreshNormal = Observable<Mutation>.just(.setRefreshState(.normal))
+            return .concat([loadData, refreshEnd, refreshNormal])
         }
-        return .empty()
     }
     
     func reduce(state: State, mutation: Mutation) -> State {
         var state = state
         
         switch mutation {
-        case let .setBooks(books):
+        case let .setBooks(books, page):
+            state.page = page
             let items = books.map(BookCellReactor.init).map(BookListViewSectionItem.bookcase)
             state.sections = [.bookcase(items)]
+        case let .appendBooks(books, page):
+            let sectionItems = state.sections[0].items + books.map(BookCellReactor.init).map(BookListViewSectionItem.bookcase)
+            state.sections = [.bookcase(sectionItems)]
+            state.page = page + 1
             return state
+        case let .setRefreshState(refreshState):
+            state.refreshState = refreshState
         }
+        return state
     }
 }
 
