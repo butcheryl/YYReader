@@ -33,6 +33,7 @@ target 'YYReader' do
   # UI
   pod 'SnapKit'
   pod 'Then'
+  pod 'MJRefresh'
   
   # XML/HTML Parser
   pod 'Fuzi'

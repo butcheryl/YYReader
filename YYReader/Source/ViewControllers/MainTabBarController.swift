@@ -13,14 +13,16 @@ import ReactorKit
 
 class MainTabBarController: UITabBarController, View {
     
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
-        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-        defer { reactor = MainTabBarViewReactor() }
+    var disposeBag = DisposeBag()
+    
+    init(reactor: MainTabBarViewReactor) {
+        super.init(nibName: nil, bundle: nil)
+        self.reactor = reactor
     }
     
     required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        defer { reactor = MainTabBarViewReactor() }
+        fatalError("init(coder:) has not been implemented")
+        
     }
     
     override func viewDidLoad() {
@@ -34,23 +36,21 @@ class MainTabBarController: UITabBarController, View {
         // Dispose of any resources that can be recreated.
     }
     
-
     func bind(reactor: MainTabBarViewReactor) {
+        
         reactor.state
             .subscribe(onNext: { [weak self] (state) in
                 guard let `self` = self else { return }
                 
-                guard let vc1 = (self.viewControllers?.first as? UINavigationController)?.viewControllers.first as? BookcaseViewController else {
-                    return
-                }
+                let viewController1 = BookcaseViewController(reactor: state.bookcaseViewReactor)
                 
-                vc1.reactor = state.bookcaseViewReactor
+                let navi1 = UINavigationController(rootViewController: viewController1)
                 
-                guard let vc2 = (self.viewControllers?.last as? UINavigationController)?.viewControllers.first as? BookstoreViewController else {
-                    return
-                }
+                let viewController2 = BookstoreViewController(reactor: state.bookstoreViewReactor)
                 
-                vc2.reactor = state.bookstoreViewReactor
+                let navi2 = UINavigationController(rootViewController: viewController2)
+                
+                self.viewControllers = [navi1, navi2]
             })
             .disposed(by: disposeBag)
     }
@@ -64,5 +64,4 @@ class MainTabBarController: UITabBarController, View {
         // Pass the selected object to the new view controller.
     }
     */
-
 }

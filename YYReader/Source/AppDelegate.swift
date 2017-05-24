@@ -20,6 +20,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        let window = UIWindow(frame: UIScreen.main.bounds)
+        window.backgroundColor = .white
+        window.makeKeyAndVisible()
+        let reactor = MainTabBarViewReactor()
+        
+        window.rootViewController = MainTabBarController(reactor: reactor)
+        
+        self.window = window
         return true
     }
 
@@ -46,11 +54,4 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
 
-}
-
-public extension View where Self: NSObject {
-    var disposeBag: DisposeBag {
-        get { return self.rx_disposeBag }
-        set { self.rx_disposeBag = newValue }
-    }
 }
