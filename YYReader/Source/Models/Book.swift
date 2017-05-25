@@ -37,6 +37,8 @@ struct Book {
     
     var cover: String?
 
+    var desc: String?
+    
     var chapters: [Chapter] = []
     
     init() {}

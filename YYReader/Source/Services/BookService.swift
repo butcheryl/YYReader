@@ -39,19 +39,24 @@ final class BookService: BookServiceType {
             .map{ doc in
                 let block = doc.body?.css("div.cover div.block").first
                 
-                let cover = block?.css("div.block_img2 img").first?.attr("src") ?? ""
+                let cover = block?.css("div.block_img2 img").first?.attr("src")
                 
-                let name = block?.css("div.block_txt2 h1 a").first?.stringValue ?? ""
+                let info = block!.css("div.block_txt2 p").map({$0.stringValue})
                 
-                let category = ""
+                let name = info[0]
                 
-                let author = ""
+                let author = info[1]
+                
+                let category = info[2]
+                
+                let desc = doc.body?.css("div.cover div.intro_info").first?.stringValue
                 
                 return Book().with({
                     $0.cover = cover
                     $0.author = author
                     $0.category = category
                     $0.name = name
+                    $0.desc = desc
                 })
             }
     }

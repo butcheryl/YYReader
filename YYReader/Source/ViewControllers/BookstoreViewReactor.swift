@@ -10,15 +10,15 @@ import ReactorKit
 import RxCocoa
 import RxSwift
 
+enum RefreshState {
+    case normal
+    case headerEnd
+    case footerEnd
+    case noMoreData
+    case reset
+}
+
 final class BookstoreViewReactor: Reactor {
-    
-    enum RefreshState {
-        case normal
-        case headerEnd
-        case footerEnd
-        case noMoreData
-        case reset
-    }
     
     enum Action {
         case refresh

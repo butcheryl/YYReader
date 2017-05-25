@@ -31,22 +31,3 @@ enum BookListViewSectionItem {
     case bookcase(BookCellReactor)
 }
 
-
-final class BookCellReactor: Reactor {
-    typealias Action = NoAction
-    
-    struct State {
-        var name: String
-    }
-    
-    let book: Book
-    
-    let initialState: State
-    
-    init(book: Book) {
-        self.book = book
-        self.initialState = State(name: book.name)
-        _ = self.state
-    }
-
-}

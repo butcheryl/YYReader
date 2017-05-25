@@ -25,7 +25,7 @@ class BookstoreViewController: BaseViewController, View {
         style: .plain
     ).then {
         $0.backgroundColor = .clear
-        $0.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        $0.register(BookstoreListTableViewCell.self, forCellReuseIdentifier: "cell")
     }
     
     init(reactor: BookstoreViewReactor) {
@@ -44,12 +44,12 @@ class BookstoreViewController: BaseViewController, View {
         // Do any additional setup after loading the view.
         
         
-        tableView.mj_header = MJRefreshStateHeader(refreshingBlock: { 
-            self.reactor?.action.onNext(Reactor.Action.refresh)
+        tableView.mj_header = MJRefreshStateHeader(refreshingBlock: { [weak self] _ in
+            self?.reactor?.action.onNext(Reactor.Action.refresh)
         })
         
-        tableView.mj_footer = MJRefreshBackFooter(refreshingBlock: { 
-            self.reactor?.action.onNext(Reactor.Action.loadMore)
+        tableView.mj_footer = MJRefreshAutoStateFooter(refreshingBlock: { [weak self] _ in
+            self?.reactor?.action.onNext(Reactor.Action.loadMore)
         })
         
         view.backgroundColor = UIColor.white
@@ -69,22 +69,36 @@ class BookstoreViewController: BaseViewController, View {
     }
     
     func bind(reactor: BookstoreViewReactor) {
-        tableView.rx.setDelegate(self).disposed(by: disposeBag)
-        
         dataSource.configureCell = { dataSource, tb, ip, item in
             switch item {
             case .bookcase(let reactor):
-                let cell = tb.dequeueReusableCell(withIdentifier: "cell", for: ip)
-                
-                reactor.state
-                    .map({ $0.name })
-                    .bind(to: cell.textLabel!.rx.text)
-                    .disposed(by: cell.rx_disposeBag)
-                
-                //                cell.reactor = reactor
+                let cell = tb.dequeueReusableCell(withIdentifier: "cell", for: ip) as! BookstoreListTableViewCell
+                cell.reactor = reactor
                 return cell
             }
         }
+        
+        
+        tableView.rx.modelSelected(BookListViewSectionItem.self)
+            .map { item -> Book in
+                switch item {
+                case .bookcase(let reactor):
+                    return reactor.book
+                }
+            }
+            .subscribe(onNext: { [weak self] book in
+                guard let `self` = self else { return }
+                
+                let reactor = BookDetailViewReactor(bookURI: book.uri)
+                
+                let vc = BookDetailViewController(reactor: reactor)
+                vc.hidesBottomBarWhenPushed = true
+                vc.title = book.name
+                
+                self.navigationController?.pushViewController(vc, animated: true)
+            })
+            .disposed(by: disposeBag)
+        
         
         // Action
         rx.viewDidLoad
@@ -95,8 +109,8 @@ class BookstoreViewController: BaseViewController, View {
         // Output
         reactor.state
             .map { $0.sections }
-            .bind(to: tableView.rx.items(dataSource: self.dataSource))
-            .disposed(by: self.disposeBag)
+            .bind(to: tableView.rx.items(dataSource: dataSource))
+            .disposed(by: disposeBag)
         
         reactor.state
             .map({ $0.refreshState })
@@ -125,8 +139,4 @@ class BookstoreViewController: BaseViewController, View {
     }
     */
 
-}
-
-extension BookstoreViewController: UITableViewDelegate {
-    
 }

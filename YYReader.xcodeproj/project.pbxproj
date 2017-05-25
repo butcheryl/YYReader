@@ -8,6 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		3834D4652E61FCFCE896C832 /* Pods_YYReader.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E574A93854B1BEFA34C007E2 /* Pods_YYReader.framework */; };
+		394D1D591ED69D7500C720FF /* BookstoreListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 394D1D581ED69D7500C720FF /* BookstoreListTableViewCell.swift */; };
+		394D1D5B1ED69DC300C720FF /* BookstoreListCellReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 394D1D5A1ED69DC300C720FF /* BookstoreListCellReactor.swift */; };
+		394D1D5D1ED6A4C800C720FF /* BookDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 394D1D5C1ED6A4C800C720FF /* BookDetailViewController.swift */; };
+		394D1D5F1ED6A4FB00C720FF /* BookDetailViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 394D1D5E1ED6A4FB00C720FF /* BookDetailViewReactor.swift */; };
+		394D1D631ED6D0A400C720FF /* String+BoundingRect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 394D1D621ED6D0A400C720FF /* String+BoundingRect.swift */; };
+		394D1D651ED6D0DF00C720FF /* BookDetailHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 394D1D641ED6D0DF00C720FF /* BookDetailHeaderView.swift */; };
+		394D1D671ED6D0FC00C720FF /* BookDetailHeaderViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 394D1D661ED6D0FC00C720FF /* BookDetailHeaderViewReactor.swift */; };
 		395B250D1ED2B85600A874D0 /* YYReaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 395B250C1ED2B85600A874D0 /* YYReaderTests.swift */; };
 		39639D061ED404EE00175393 /* BookService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39639D051ED404EE00175393 /* BookService.swift */; };
 		39639D091ED40FCB00175393 /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39639D081ED40FCB00175393 /* Book.swift */; };
@@ -42,6 +49,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		394D1D581ED69D7500C720FF /* BookstoreListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookstoreListTableViewCell.swift; sourceTree = "<group>"; };
+		394D1D5A1ED69DC300C720FF /* BookstoreListCellReactor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookstoreListCellReactor.swift; sourceTree = "<group>"; };
+		394D1D5C1ED6A4C800C720FF /* BookDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookDetailViewController.swift; sourceTree = "<group>"; };
+		394D1D5E1ED6A4FB00C720FF /* BookDetailViewReactor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookDetailViewReactor.swift; sourceTree = "<group>"; };
+		394D1D621ED6D0A400C720FF /* String+BoundingRect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+BoundingRect.swift"; sourceTree = "<group>"; };
+		394D1D641ED6D0DF00C720FF /* BookDetailHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookDetailHeaderView.swift; sourceTree = "<group>"; };
+		394D1D661ED6D0FC00C720FF /* BookDetailHeaderViewReactor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookDetailHeaderViewReactor.swift; sourceTree = "<group>"; };
 		395B24F41ED2B85600A874D0 /* YYReader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YYReader.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		395B25081ED2B85600A874D0 /* YYReaderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = YYReaderTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		395B250C1ED2B85600A874D0 /* YYReaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YYReaderTests.swift; sourceTree = "<group>"; };
@@ -103,6 +117,21 @@
 				FCEC0D6AF209817620C34362 /* Pods-YYReaderTests.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		394D1D601ED6D05A00C720FF /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				394D1D621ED6D0A400C720FF /* String+BoundingRect.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		394D1D611ED6D05A00C720FF /* Types */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Types;
 			sourceTree = "<group>";
 		};
 		395B24EB1ED2B85600A874D0 = {
@@ -171,6 +200,8 @@
 				39639D151ED42E6A00175393 /* BookcaseViewReactor.swift */,
 				39639D131ED42E3500175393 /* BookstoreViewController.swift */,
 				39639D171ED42E7200175393 /* BookstoreViewReactor.swift */,
+				394D1D5C1ED6A4C800C720FF /* BookDetailViewController.swift */,
+				394D1D5E1ED6A4FB00C720FF /* BookDetailViewReactor.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -186,6 +217,10 @@
 		39639D1C1ED437CF00175393 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				394D1D581ED69D7500C720FF /* BookstoreListTableViewCell.swift */,
+				394D1D5A1ED69DC300C720FF /* BookstoreListCellReactor.swift */,
+				394D1D641ED6D0DF00C720FF /* BookDetailHeaderView.swift */,
+				394D1D661ED6D0FC00C720FF /* BookDetailHeaderViewReactor.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -202,6 +237,8 @@
 		3982F01C1ED2CBA00025E081 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				394D1D601ED6D05A00C720FF /* Extension */,
+				394D1D611ED6D05A00C720FF /* Types */,
 				39639D071ED40FBD00175393 /* Models */,
 				39639D1C1ED437CF00175393 /* Views */,
 				39639D191ED435DA00175393 /* Sections */,
@@ -461,7 +498,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				394D1D591ED69D7500C720FF /* BookstoreListTableViewCell.swift in Sources */,
 				3982F0301ED2DC100025E081 /* BookAPI.swift in Sources */,
+				394D1D671ED6D0FC00C720FF /* BookDetailHeaderViewReactor.swift in Sources */,
 				39639D0E1ED4236F00175393 /* MainTabBarController.swift in Sources */,
 				3982F0241ED2CBA00025E081 /* AppDelegate.swift in Sources */,
 				3982F02E1ED2DA0D0025E081 /* Networking.swift in Sources */,
@@ -472,10 +511,15 @@
 				39639D181ED42E7200175393 /* BookstoreViewReactor.swift in Sources */,
 				39639D141ED42E3500175393 /* BookstoreViewController.swift in Sources */,
 				3982F0321ED2E3390025E081 /* YYReaderTargetType.swift in Sources */,
+				394D1D5F1ED6A4FB00C720FF /* BookDetailViewReactor.swift in Sources */,
 				39639D121ED42E1D00175393 /* BookcaseViewController.swift in Sources */,
+				394D1D631ED6D0A400C720FF /* String+BoundingRect.swift in Sources */,
+				394D1D5B1ED69DC300C720FF /* BookstoreListCellReactor.swift in Sources */,
+				394D1D5D1ED6A4C800C720FF /* BookDetailViewController.swift in Sources */,
 				3982F03A1ED2EA350025E081 /* UIViewController+Rx.swift in Sources */,
 				39639D091ED40FCB00175393 /* Book.swift in Sources */,
 				3982F0351ED2E6E90025E081 /* Observable+YYReaderAPI.swift in Sources */,
+				394D1D651ED6D0DF00C720FF /* BookDetailHeaderView.swift in Sources */,
 				39639D0B1ED40FF300175393 /* Chapter.swift in Sources */,
 				39639D1B1ED435F600175393 /* BookListViewSection.swift in Sources */,
 			);
