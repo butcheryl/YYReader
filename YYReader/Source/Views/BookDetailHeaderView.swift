@@ -58,8 +58,8 @@ class BookDetailHeaderView: UIView, View {
         
         addSubview(descLabel)
         descLabel.snp.makeConstraints { (make) in
-            make.left.equalTo(5)
-            make.right.equalTo(-5)
+            make.left.equalTo(10)
+            make.right.equalTo(-10)
             make.top.equalTo(cover.snp.bottom).offset(5)
         }
     }
@@ -96,7 +96,7 @@ class BookDetailHeaderView: UIView, View {
     }
     
     static func height(with desc: String?) -> CGFloat {
-        let descHeight = (desc ?? "").height(withConstrainedWidth: UIScreen.main.bounds.width - 10, font: UIFont.systemFont(ofSize: 17))
+        let descHeight = (desc ?? "").height(withConstrainedWidth: UIScreen.main.bounds.width - 20, font: UIFont.systemFont(ofSize: 17))
         
         return descHeight + 120
     }

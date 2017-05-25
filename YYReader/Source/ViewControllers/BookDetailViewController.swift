@@ -71,6 +71,14 @@ class BookDetailViewController: BaseViewController, View {
             return cell
         }
         
+//        tableView.rx.itemSelected
+//            .map { indexPath in
+//                let actions: [Reactor.Action] = [.checkCatalogue, .startReading, .joinBookcase]
+//                return actions[indexPath.row]
+//            }
+//            .bind(to: reactor.action)
+//            .disposed(by: disposeBag)
+        
         rx.viewDidLoad
             .map { Reactor.Action.loadHeaderData }
             .bind(to: reactor.action)

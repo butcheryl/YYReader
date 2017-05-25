@@ -26,6 +26,10 @@ final class BookDetailViewReactor: Reactor {
     enum Action {
         case loadHeaderData
         case loadListData
+        
+//        case checkCatalogue
+//        case startReading
+//        case joinBookcase
     }
     
     enum Mutation {
@@ -49,6 +53,8 @@ final class BookDetailViewReactor: Reactor {
         case .loadListData:
             let section = SectionModel<String, String>(model: "", items: ["查看目录", "开始阅读", "加入书架"])
             return Observable<Mutation>.just(.setListData([section]))
+//        case .checkCatalogue:
+            
         }
     }
 

@@ -27,7 +27,7 @@ final class BookDetailHeaderViewReactor: Reactor {
         var desc = book.desc ?? ""
         
         if desc.characters.count == 0 {
-            desc = "无"
+            desc = "暂无简介"
         } else  {
             desc = desc.replacingOccurrences(of: "&nbsp", with: " ")
         }
