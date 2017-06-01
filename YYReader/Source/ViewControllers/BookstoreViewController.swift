@@ -43,7 +43,6 @@ class BookstoreViewController: BaseViewController, View {
 
         // Do any additional setup after loading the view.
         
-        
         tableView.mj_header = MJRefreshStateHeader(refreshingBlock: { [weak self] _ in
             self?.reactor?.action.onNext(Reactor.Action.refresh)
         })
@@ -78,7 +77,6 @@ class BookstoreViewController: BaseViewController, View {
             }
         }
         
-        
         tableView.rx.modelSelected(BookListViewSectionItem.self)
             .map { item -> Book in
                 switch item {
@@ -98,7 +96,6 @@ class BookstoreViewController: BaseViewController, View {
                 self.navigationController?.pushViewController(vc, animated: true)
             })
             .disposed(by: disposeBag)
-        
         
         // Action
         rx.viewDidLoad
@@ -138,5 +135,4 @@ class BookstoreViewController: BaseViewController, View {
         // Pass the selected object to the new view controller.
     }
     */
-
 }

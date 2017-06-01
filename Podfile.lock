@@ -41,6 +41,9 @@ PODS:
   - RxTest (3.4.1):
     - RxSwift (~> 3.4)
   - SnapKit (3.2.0)
+  - SQLite.swift (0.11.3):
+    - SQLite.swift/standard (= 0.11.3)
+  - SQLite.swift/standard (0.11.3)
   - Then (2.1.0)
 
 DEPENDENCIES:
@@ -62,6 +65,7 @@ DEPENDENCIES:
   - RxSwiftUtilities
   - RxTest (~> 3.0)
   - SnapKit
+  - SQLite.swift
   - Then
 
 SPEC CHECKSUMS:
@@ -82,8 +86,9 @@ SPEC CHECKSUMS:
   RxSwiftUtilities: 57e77c17b885931c37aa038f114f14fd1f478ac2
   RxTest: a6fd6e4069face7c6488f96f6c42296b3e44db48
   SnapKit: 1ca44df72cfa543218d177cb8aab029d10d86ea7
+  SQLite.swift: 99b36c22084427f0abbeb957556ce1528cf10bb3
   Then: 8496793c8fcac95482b943909b440724c7d8d82c
 
-PODFILE CHECKSUM: 4e7828e53c209e4d55388d919831e9c31ae09d67
+PODFILE CHECKSUM: 65308df436b06ae8f09e9acb003ad14cbfb1af49
 
 COCOAPODS: 1.2.1

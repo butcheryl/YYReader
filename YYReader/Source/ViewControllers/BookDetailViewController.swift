@@ -71,13 +71,29 @@ class BookDetailViewController: BaseViewController, View {
             return cell
         }
         
-//        tableView.rx.itemSelected
-//            .map { indexPath in
-//                let actions: [Reactor.Action] = [.checkCatalogue, .startReading, .joinBookcase]
-//                return actions[indexPath.row]
-//            }
-//            .bind(to: reactor.action)
-//            .disposed(by: disposeBag)
+        tableView.rx.itemSelected
+            .subscribe(onNext: { [weak self] indexPath in
+                guard let `self` = self else { return }
+                
+                switch indexPath.row {
+                case 0:
+                    let bcReactor = BookCatalogueReactor(bookURI: reactor.currentState.uri)
+                    let vc = BookCatalogueViewController(reactor: bcReactor)
+                    let navi = UINavigationController(rootViewController: vc)
+                    self.present(navi, animated: true, completion: nil)
+                    break
+                case 1:
+                    // push book content view controller
+                    break
+                case 2:
+                    // joining bookcase
+                    reactor.action.onNext(.joinBookcase)
+                    break
+                default:
+                    break
+                }
+            })
+            .disposed(by: disposeBag)
         
         rx.viewDidLoad
             .map { Reactor.Action.loadHeaderData }

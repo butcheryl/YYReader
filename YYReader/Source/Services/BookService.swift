@@ -14,6 +14,8 @@ protocol BookServiceType {
     func books(category: Book.Category, page: Int) -> Observable<[Book]>
     
     func book(uri: String) -> Observable<Book>
+    
+    func catalog(uri: String) -> Observable<[Chapter]>
 }
 
 final class BookService: BookServiceType {
@@ -58,6 +60,15 @@ final class BookService: BookServiceType {
                     $0.name = name
                     $0.desc = desc
                 })
+            }
+    }
+    
+    func catalog(uri: String) -> Observable<[Chapter]> {
+        return APIs.request(.catalog(uri: ""))
+            .mapHTML()
+            .map { doc in
+//                [Chapter(id: 0, number: 0, title: "", paragraphs: [], hasCache: false)]
+                return [Chapter]()
             }
     }
 }

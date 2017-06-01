@@ -27,6 +27,8 @@ struct Book {
         }
     }
     
+    var id: Int = 0
+    
     var uri: String = ""
     
     var name: String = ""
@@ -39,7 +41,9 @@ struct Book {
 
     var desc: String?
     
-    var chapters: [Chapter] = []
+    var currentReadBookId: Int = 0
+    
+    var chapters: [Chapter] = []    
     
     init() {}
 }

@@ -13,9 +13,9 @@ struct Paragraph {
 }
 
 struct Chapter {
+    var id: Int
     var number: Int
     var title: String
     var paragraphs: [Paragraph] = []
+    var hasCache: Bool = false
 }
-
-

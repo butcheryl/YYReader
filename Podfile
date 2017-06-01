@@ -38,6 +38,9 @@ target 'YYReader' do
   # XML/HTML Parser
   pod 'Fuzi'
 
+  # Cache
+  pod 'SQLite.swift'
+  
   target 'YYReaderTests' do
     inherit! :search_paths
     # Pods for testing
