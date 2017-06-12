@@ -42,7 +42,14 @@ class BookCatalogueViewController: BaseViewController, View {
         
         view.addSubview(tableView)
         
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "关闭", style: .done, target: self, action: #selector(closeButtonClicked(sender:)))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "关闭", style: .done, target: self, action: #selector(closeButtonClicked(sender:)))
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "倒序", style: .done, target: nil, action: nil)
+        
+        navigationItem.rightBarButtonItem?.rx.tap
+            .map({ Reactor.Action.changeOrder })
+            .bind(to: reactor!.action)
+            .disposed(by: disposeBag)
     }
 
     func closeButtonClicked(sender: UIBarButtonItem) {

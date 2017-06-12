@@ -14,7 +14,9 @@ class Database {
     fileprivate let books = Table("books")
     
     fileprivate let chapters = Table("chapters")
- 
+    
+    static let `default` = Database()
+    
     init() {
         createBooksTable()
         createChaptersTable()
@@ -61,18 +63,14 @@ class Database {
     
     func bookList() -> [Book] {
         guard let db = db else { return [] }
-        
         guard let rows = try? db.prepare(books) else { return [] }
-        
         return rows.map({ _ in Book() })
     }
-    
-    
     
     func book(where expression: Expression<Bool>) -> Book? {
         guard let db = db else { return nil }
         
-        guard let row = try? db.pluck(books.filter(expression))! else { return nil }
+        guard let row = (try? db.pluck(books.filter(expression))).flatMap({$0}) else { return nil }
         
         let bookID = row[Expression<Int>("id")]
         
@@ -95,11 +93,24 @@ class Database {
             Chapter(id: $0.get(Expression<Int>("id")),
                     number: $0.get(Expression<Int>("number")),
                     title: $0.get(Expression<String>("title")),
-                    paragraphs: [],
                     hasCache: true)
         }
         
         return book
+    }
+    
+    func insertChapter(with uri: String, titles: [String]) {
+        guard let db = db else { return }
+        
+        let number = Expression<Int>("number")
+        let title = Expression<String>("title")
+//        let content = Expression<String?>("content")
+//        let bookId = Expression<Int>("book_id")
+        
+        titles.enumerated().forEach { index, value in
+            let insert = chapters.insert(number <- index, title <- value)
+            _ = try? db.run(insert)
+        }
     }
     
     func book(where uri: String) -> Book? {

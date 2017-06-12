@@ -12,9 +12,9 @@ import RxSwift
 import RxDataSources
 
 class BookCatalogueReactor: Reactor {
-
     enum Action {
         case loadData
+        case changeOrder
     }
     
     enum Mutation {
@@ -32,6 +32,8 @@ class BookCatalogueReactor: Reactor {
     
     let initialState: State
     
+    var service: BookService = BookService()
+    
     init(bookURI uri: String) {
         initialState = State(uri: uri)
         _ = self.state
@@ -41,25 +43,12 @@ class BookCatalogueReactor: Reactor {
         switch action {
         case .loadData:
             let uri = currentState.uri
-            
-            let db = Database()
-            
-            let ts = db.book(where: uri)?.chapters.map { $0.title } ?? []
-            
-            if ts.count <= 0 {
-                return APIs.request(.catalog(uri: uri))
-                    .mapHTML()
-                    .map({ (doc) -> [Chapter] in
-                        return [Chapter]()
-                    })
-                    .map({
-                        let section = SectionModel<String, String>(model: "", items: $0.map{ $0.title })
-                        return .setListData([section])
-                    })
-            } else {
-                let section = SectionModel<String, String>(model: "", items: ts)
-                return Observable<Mutation>.just(.setListData([section]))
-            }
+            return service.catalog(uri: uri)
+                .map({ $0.enumerated().flatMap({ "\($0+1). \($1.title)" }) })
+                .map({ .setListData([SectionModel<String, String>(model: "", items: $0)]) })
+        case .changeOrder:
+            let items: [String] = (currentState.sections.first?.items ?? []).reversed()
+            return .just(.setListData([SectionModel<String, String>(model: "", items: items)]))
         }
     }
     

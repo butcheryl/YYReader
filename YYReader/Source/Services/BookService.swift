@@ -64,11 +64,13 @@ final class BookService: BookServiceType {
     }
     
     func catalog(uri: String) -> Observable<[Chapter]> {
-        return APIs.request(.catalog(uri: ""))
+        return APIs.request(.catalog(uri: uri))
             .mapHTML()
-            .map { doc in
-//                [Chapter(id: 0, number: 0, title: "", paragraphs: [], hasCache: false)]
-                return [Chapter]()
-            }
+            .map({ doc in
+                return doc.css("body > div.cover > ul > li > a")
+                    .enumerated()
+                    .map({ Chapter(number: $0, title: $1.stringValue) })
+            })
+            .filterEmpty()
     }
 }
