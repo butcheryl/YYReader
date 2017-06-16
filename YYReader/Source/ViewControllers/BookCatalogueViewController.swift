@@ -69,6 +69,10 @@ class BookCatalogueViewController: BaseViewController, View {
     
     func bind(reactor: BookCatalogueReactor) {
         
+        tableView.rx
+            .setDelegate(self)
+            .disposed(by: disposeBag)
+        
         dataSource.configureCell = { dataSource, tb, ip, item in
             let cell = tb.dequeueReusableCell(withIdentifier: "cell", for: ip)
             cell.textLabel?.text = item
@@ -95,4 +99,10 @@ class BookCatalogueViewController: BaseViewController, View {
     }
     */
 
+}
+
+extension BookCatalogueViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
 }
